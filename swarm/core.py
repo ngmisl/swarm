@@ -30,7 +30,8 @@ class Swarm:
     def __init__(self, client=None):
         if not client:
             client = OpenAI()
-            client.base_url = OPENAI_ENDPOINT
+            client.base_url = OPENAI_ENDPOINT,
+            api_key="ollama"  # This is a dummy API key for local testing
         self.client = client
 
     def get_chat_completion(
