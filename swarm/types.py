@@ -1,3 +1,4 @@
+import os
 from openai.types.chat import ChatCompletionMessage
 from openai.types.chat.chat_completion_message_tool_call import (
     ChatCompletionMessageToolCall,
@@ -10,10 +11,12 @@ from pydantic import BaseModel
 
 AgentFunction = Callable[[], Union[str, "Agent", dict]]
 
+SWARM_DEFAULT_MODEL = os.getenv('SWARM_DEFAULT_MODEL', 'hhao/qwen2.5-coder-tools:latest')
+
 
 class Agent(BaseModel):
     name: str = "Agent"
-    model: str = "gpt-4o"
+    model: str = SWARM_DEFAULT_MODEL
     instructions: Union[str, Callable[[], str]] = "You are a helpful agent."
     functions: List[AgentFunction] = []
     tool_choice: str = None
