@@ -23,7 +23,7 @@ from .types import (
 
 __CTX_VARS_NAME__ = "context_variables"
 
-OPENAI_ENDPOINT = os.getenv('OPENAI_ENDPOINT', 'https://api.openai.com/v1')
+OPENAI_ENDPOINT = os.getenv('OPENAI_ENDPOINT', 'http://localhost:11434/v1')
 
 
 class Swarm:
